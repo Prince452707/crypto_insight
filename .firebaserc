@@ -1,6 +1,7 @@
 {
   "projects": {
-    "i want data here": "sample-firebase-ai-app-521e3"
+    "i want data here": "sample-firebase-ai-app-521e3",
+    "default": "cryptoduse-e7d87"
   },
   "targets": {},
   "etags": {}

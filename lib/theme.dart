@@ -22,7 +22,7 @@ class ThemeProvider extends ChangeNotifier {
       surface: _cardDark,
     ),
     textTheme: const TextTheme(
-      bodyLarge: TextStyle(color: Colors.white, fontFamily: 'Roboto'),
+      bodyLarge: TextStyle(color: Color.fromARGB(255, 191, 3, 3), fontFamily: 'Roboto'),
       bodyMedium: TextStyle(color: Colors.white70, fontFamily: 'Roboto'),
       displayLarge: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontFamily: 'Roboto'),
       labelLarge: TextStyle(color: Colors.white, fontFamily: 'Roboto'),
