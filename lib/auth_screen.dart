@@ -2234,33 +2234,59 @@ class _AuthScreenState extends State<AuthScreen> with SingleTickerProviderStateM
     }
     return signInMethods;
   }
-
   Future<void> _signInWithGoogle() async {
-    setState(() {
-      _isGoogleLoading = true;
-      _errorMessage = '';
-    });
+  setState(() {
+    _isGoogleLoading = true;
+    _errorMessage = '';
+  });
 
-    try {
-      final googleSignIn = GoogleSignIn(scopes: ['email', 'profile']);
-      await googleSignIn.signOut();
-      final googleUser = await googleSignIn.signIn();
+  try {
+    final googleSignIn = GoogleSignIn(scopes: ['email', 'profile']);
+    await googleSignIn.signOut(); // Ensure fresh sign-in
+    final googleUser = await googleSignIn.signIn(); // This might return null
 
-      if (googleUser == null) throw Exception('Google Sign-In cancelled');
+    if (googleUser == null) throw Exception('Google Sign-In cancelled'); // Check for null
 
-      final googleAuth = await googleUser.authentication;
-      final credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth.accessToken,
-        idToken: googleAuth.idToken,
-      );
+    final googleAuth = await googleUser.authentication; // Null check issue here?
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
 
-      await FirebaseAuth.instance.signInWithCredential(credential);
-    } catch (e) {
-      setState(() => _errorMessage = e.toString());
-    } finally {
-      setState(() => _isGoogleLoading = false);
-    }
+    await FirebaseAuth.instance.signInWithCredential(credential);
+  } catch (e) {
+    setState(() => _errorMessage = e.toString());
+  } finally {
+    setState(() => _isGoogleLoading = false);
   }
+}
+
+  // Future<void> _signInWithGoogle() async {
+  //   setState(() {
+  //     _isGoogleLoading = true;
+  //     _errorMessage = '';
+  //   });
+
+  //   try {
+  //     final googleSignIn = GoogleSignIn(scopes: ['email', 'profile']);
+  //     await googleSignIn.signOut();
+  //     final googleUser = await googleSignIn.signIn();
+
+  //     if (googleUser == null) throw Exception('Google Sign-In cancelled');
+
+  //     final googleAuth = await googleUser.authentication;
+  //     final credential = GoogleAuthProvider.credential(
+  //       accessToken: googleAuth.accessToken,
+  //       idToken: googleAuth.idToken,
+  //     );
+
+  //     await FirebaseAuth.instance.signInWithCredential(credential);
+  //   } catch (e) {
+  //     setState(() => _errorMessage = e.toString());
+  //   } finally {
+  //     setState(() => _isGoogleLoading = false);
+  //   }
+  // }
 
   Future<void> _resetPassword() async {
     if (_emailController.text.isEmpty || !_emailController.text.contains('@')) {
@@ -2530,4 +2556,3 @@ class _AuthScreenState extends State<AuthScreen> with SingleTickerProviderStateM
   }
 }
 
-//
