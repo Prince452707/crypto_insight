@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "662823526299",
+    "project_id": "cryptoduse-e7d87",
+    "storage_bucket": "cryptoduse-e7d87.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:662823526299:android:a89f5d87be1820fa738b3e",
+        "android_client_info": {
+          "package_name": "com.example.crypto_insight"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "662823526299-h3pagt80l0ufteguaea4pha3qokkfc22.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.crypto_insight",
+            "certificate_hash": "da39a3ee5e6b4b0d3255bfef95601891afd8070a"
+          }
+        },
+        {
+          "client_id": "662823526299-fqvbtpne58q7lofqifi1mvit03atd193.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAN_qZSoiN-LNZIcW-z8H8jy7xFX_NYrgk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "662823526299-fqvbtpne58q7lofqifi1mvit03atd193.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "662823526299-bli3j284u1htaa6lvn8vacmhj7h8f59v.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.cryptoInsight"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
