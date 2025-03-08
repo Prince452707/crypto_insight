@@ -138,6 +138,14 @@ class AppDrawer extends StatelessWidget {
               Navigator.pushNamed(context, '/settings');
             },
           ),
+          ListTile(
+            leading: const Icon(Icons.help_outline),
+            title: const Text('Help & Support'),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, '/help');
+            },
+          ),
         ],
       ),
     );

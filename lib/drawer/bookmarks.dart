@@ -3,7 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '/service.dart/api.dart';
 import '/service.dart/json_and_others.dart';
-import 'CryptocurrencyDetailScreen.dart';
+import '../screen.dart/CryptocurrencyDetailScreen.dart';
 
 class BookmarksScreen extends StatefulWidget {
   @override

@@ -650,7 +650,7 @@ class _CryptoLearningScreenState extends State<CryptoLearningScreen>
 
     try {
       final model = GenerativeModel(
-        model: 'gemini-pro',
+        model: 'gemini-2.0-flash',
         apiKey: 'AIzaSyALPelkD_VVKoYNVzk1XuKadvpDayOQw1Y',
       );
 

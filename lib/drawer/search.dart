@@ -668,8 +668,8 @@
 
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'CryptocurrencyListItem.dart';
-import '/drawer.dart';
+import '../screen.dart/CryptocurrencyListItem.dart';
+import 'drawer.dart';
 import '/service.dart/json_and_others.dart';
 import '/service.dart/api.dart';
 

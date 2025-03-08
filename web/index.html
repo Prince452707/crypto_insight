@@ -19,28 +19,31 @@
   <link rel="manifest" href="manifest.json">
 </head>
 <body>
-  <!-- Flutter web bootstrap script -->
-  <script src="flutter_bootstrap.js" async></script>
-
   <!-- Firebase SDK -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
+    import { getAuth } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
+    import { getFirestore } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-analytics.js";
 
-    // Your Firebase configuration
     const firebaseConfig = {
       apiKey: "AIzaSyAsNfkixejWKPZ1Ub50Sg6HuqzIb_bM0ak",
-      authDomain: "cryptoduse-e7d87.firebaseapp.com",
-      projectId: "cryptoduse-e7d87",
-      storageBucket: "cryptoduse-e7d87.firebasestorage.app",
-      messagingSenderId: "662823526299",
-      appId: "1:662823526299:web:d8bf961ad1f92978738b3e", // Pick one appId
-      measurementId: "G-3WX17SK8R5"
+    authDomain: "cryptoduse-e7d87.firebaseapp.com",
+    projectId: "cryptoduse-e7d87",
+    storageBucket: "cryptoduse-e7d87.firebasestorage.app",
+    messagingSenderId: "662823526299",
+    appId: "1:662823526299:web:e5350a7e4cc9012e738b3e",
+    measurementId: "G-3WX17SK8R5"
     };
 
-    // Initialize Firebase
     const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
     const analytics = getAnalytics(app);
   </script>
+
+  <!-- Flutter web bootstrap script -->
+  <script src="flutter_bootstrap.js" async></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
 </body>
 </html>

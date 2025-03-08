@@ -1,4 +1,3 @@
-
 // import 'package:flutter/material.dart';
 // import '/service.dart/api.dart';
 // import '/similar_coins.dart';
@@ -13,9 +12,6 @@
 // import 'package:crypto_insight/screen.dart/CryptocurrencyOverviewTab.dart';
 // import 'package:crypto_insight/service.dart/json_and_others.dart';
 
-
-
-
 // class CryptocurrencyDetailScreen extends StatefulWidget {
 //   final Cryptocurrency cryptocurrency;
 
@@ -28,7 +24,7 @@
 // class _CryptocurrencyDetailScreenState extends State<CryptocurrencyDetailScreen> with SingleTickerProviderStateMixin {
 //   late TabController _tabController;
 //   late ScrollController _scrollController;
-  
+
 //   Map<String, dynamic> details = {};
 //   bool isLoading = true;
 
@@ -226,21 +222,6 @@
 //     );
 //   }
 // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import 'package:flutter/material.dart';
 // import '/service.dart/api.dart';
@@ -475,27 +456,6 @@
 //   }
 // }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart'; // Add this
 import '/service.dart/api.dart';
@@ -508,18 +468,21 @@ import 'CryptocurrencyDetailsTab.dart';
 import 'aiQ&A.dart';
 import 'package:crypto_insight/screen.dart/CryptocurrencyOverviewTab.dart';
 import 'package:crypto_insight/service.dart/json_and_others.dart';
-import 'bookmarks.dart';
+import '../drawer/bookmarks.dart';
 
 class CryptocurrencyDetailScreen extends StatefulWidget {
   final Cryptocurrency cryptocurrency;
 
-  const CryptocurrencyDetailScreen({Key? key, required this.cryptocurrency}) : super(key: key);
+  const CryptocurrencyDetailScreen({Key? key, required this.cryptocurrency})
+      : super(key: key);
 
   @override
-  _CryptocurrencyDetailScreenState createState() => _CryptocurrencyDetailScreenState();
+  _CryptocurrencyDetailScreenState createState() =>
+      _CryptocurrencyDetailScreenState();
 }
 
-class _CryptocurrencyDetailScreenState extends State<CryptocurrencyDetailScreen> with SingleTickerProviderStateMixin {
+class _CryptocurrencyDetailScreenState extends State<CryptocurrencyDetailScreen>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
   late ScrollController _scrollController;
   Map<String, dynamic> details = {};
@@ -545,7 +508,8 @@ class _CryptocurrencyDetailScreenState extends State<CryptocurrencyDetailScreen>
   Future<void> fetchDetails() async {
     setState(() => isLoading = true);
     try {
-      final fetchedDetails = await ApiService.getCryptocurrencyDetails(widget.cryptocurrency.id);
+      final fetchedDetails =
+          await ApiService.getCryptocurrencyDetails(widget.cryptocurrency.id);
       setState(() {
         details = fetchedDetails;
         isLoading = false;
@@ -570,7 +534,8 @@ class _CryptocurrencyDetailScreenState extends State<CryptocurrencyDetailScreen>
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => SimilarCryptocurrenciesScreen(cryptocurrency: widget.cryptocurrency),
+        builder: (context) => SimilarCryptocurrenciesScreen(
+            cryptocurrency: widget.cryptocurrency),
       ),
     );
   }
@@ -585,7 +550,8 @@ class _CryptocurrencyDetailScreenState extends State<CryptocurrencyDetailScreen>
 
   Future<void> _toggleBookmark() async {
     final prefs = await SharedPreferences.getInstance();
-    List<String> bookmarkedIds = prefs.getStringList('bookmarked_crypto_ids') ?? [];
+    List<String> bookmarkedIds =
+        prefs.getStringList('bookmarked_crypto_ids') ?? [];
 
     if (isBookmarked) {
       bookmarkedIds.remove(widget.cryptocurrency.id);
@@ -600,7 +566,9 @@ class _CryptocurrencyDetailScreenState extends State<CryptocurrencyDetailScreen>
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text(isBookmarked ? '${widget.cryptocurrency.name} bookmarked!' : '${widget.cryptocurrency.name} removed from bookmarks!'),
+        content: Text(isBookmarked
+            ? '${widget.cryptocurrency.name} bookmarked!'
+            : '${widget.cryptocurrency.name} removed from bookmarks!'),
         backgroundColor: isBookmarked ? Colors.green : Colors.grey,
         behavior: SnackBarBehavior.floating,
       ),
@@ -623,7 +591,12 @@ class _CryptocurrencyDetailScreenState extends State<CryptocurrencyDetailScreen>
                   style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
-                    shadows: [Shadow(blurRadius: 2.0, color: Colors.black45, offset: Offset(1.0, 1.0))],
+                    shadows: [
+                      Shadow(
+                          blurRadius: 2.0,
+                          color: Colors.black45,
+                          offset: Offset(1.0, 1.0))
+                    ],
                   ),
                 ),
                 background: Stack(
@@ -642,7 +615,8 @@ class _CryptocurrencyDetailScreenState extends State<CryptocurrencyDetailScreen>
                       bottom: 60,
                       left: 16,
                       child: CircleAvatar(
-                        backgroundImage: CachedNetworkImageProvider(widget.cryptocurrency.image),
+                        backgroundImage: CachedNetworkImageProvider(
+                            widget.cryptocurrency.image),
                         radius: 30,
                         backgroundColor: Colors.white,
                       ),
@@ -671,7 +645,8 @@ class _CryptocurrencyDetailScreenState extends State<CryptocurrencyDetailScreen>
         body: isLoading
             ? Center(
                 child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).primaryColor),
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                      Theme.of(context).primaryColor),
                 ),
               )
             : Column(
@@ -695,11 +670,18 @@ class _CryptocurrencyDetailScreenState extends State<CryptocurrencyDetailScreen>
                     child: TabBarView(
                       controller: _tabController,
                       children: [
-                        CryptocurrencyOverviewTab(cryptocurrency: widget.cryptocurrency, details: details),
-                        CryptocurrencyChartTab(cryptocurrency: widget.cryptocurrency),
-                        CryptocurrencyAIInsightsTab(cryptocurrency: widget.cryptocurrency),
-                        CryptocurrencyAIQATab(cryptocurrency: widget.cryptocurrency),
-                        CryptocurrencyDetailsTab(cryptocurrency: widget.cryptocurrency, details: details),
+                        CryptocurrencyOverviewTab(
+                            cryptocurrency: widget.cryptocurrency,
+                            details: details),
+                        CryptocurrencyChartTab(
+                            cryptocurrency: widget.cryptocurrency),
+                        CryptocurrencyAIInsightsTab(
+                            cryptocurrency: widget.cryptocurrency),
+                        CryptocurrencyAIQATab(
+                            cryptocurrency: widget.cryptocurrency),
+                        CryptocurrencyDetailsTab(
+                            cryptocurrency: widget.cryptocurrency,
+                            details: details),
                       ],
                     ),
                   ),
@@ -721,7 +703,8 @@ class _CryptocurrencyDetailScreenState extends State<CryptocurrencyDetailScreen>
             children: [
               Text(
                 '\$${NumberFormat("#,##0.00").format(widget.cryptocurrency.price)}',
-                style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                style:
+                    const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               Text(
                 widget.cryptocurrency.symbol.toUpperCase(),
@@ -732,12 +715,15 @@ class _CryptocurrencyDetailScreenState extends State<CryptocurrencyDetailScreen>
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
             decoration: BoxDecoration(
-              color: widget.cryptocurrency.percentChange24h >= 0 ? Colors.green : Colors.red,
+              color: widget.cryptocurrency.percentChange24h >= 0
+                  ? Colors.green
+                  : Colors.red,
               borderRadius: BorderRadius.circular(4),
             ),
             child: Text(
               '${widget.cryptocurrency.percentChange24h.toStringAsFixed(2)}%',
-              style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              style: const TextStyle(
+                  color: Colors.white, fontWeight: FontWeight.bold),
             ),
           ),
         ],
